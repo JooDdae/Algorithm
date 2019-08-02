@@ -21,11 +21,13 @@ void update(int node,int l,int r,int id,int val){
 	update(node*2+1,mid+1,r,id,val);
 	tree[node] = max(tree[node*2], tree[node*2+1]);
 }
+
 int find(int node,int l,int r,int nl,int nr){
 	if(r<nl || nr<l) return 0;
 	if(nl<=l && r<=nr) return tree[node];
 	return max(find(node*2,l,mid,nl,nr), find(node*2+1,mid+1,r,nl,nr));
 }
+
 void dfs_size(int cur,int par){
 	size[cur] = 1;
 	lev[cur] = lev[par]+1;
@@ -36,6 +38,7 @@ void dfs_size(int cur,int par){
 		if(size[nxt.to] > size[v[cur][0].to]) swap(nxt, v[cur][0]);
 	}
 }
+
 void dfs_hld(int cur,int par){
 	in[cur] = cnt;
 	for(node &nxt : v[cur]){
@@ -47,6 +50,7 @@ void dfs_hld(int cur,int par){
 		dfs_hld(nxt.to, cur);
 	}
 }
+
 int hld(int a,int b){
 	int re=0;
 	while(head[a] != head[b]){

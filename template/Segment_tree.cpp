@@ -19,6 +19,7 @@ void update(int node,int l,int r,int id,int val){
 	update(node*2+1,mid+1,r,id,val);
 	tree[node] = tree[node*2]+tree[node*2+1];
 }
+
 ll find(int node,int l,int r,int nl,int nr){
 	if(r<nl || nr<l) return 0;
 	if(nl<=l && r<=nr) return tree[node];

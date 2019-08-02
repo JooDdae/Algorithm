@@ -19,6 +19,7 @@ void lazy_update(int node,int l,int r){
 		lazy[node] = 0;
 	}
 }
+
 void update(int node,int l,int r,int nl,int nr,int val){
 	lazy_update(node,l,r);
 	if(r<nl || nr<l) return;
@@ -31,6 +32,7 @@ void update(int node,int l,int r,int nl,int nr,int val){
 	update(node*2+1,mid+1,r,nl,nr,val);
 	tree[node] = tree[node*2] + tree[node*2+1];
 }
+
 ll find(int node,int l,int r,int nl,int nr){
 	lazy_update(node,l,r);
 	if(r<nl || nr<l) return 0;

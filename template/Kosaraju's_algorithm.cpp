@@ -14,6 +14,7 @@ void dfs1(int cur){
 	for(int nxt : nv[cur]) if(!chk[nxt]) dfs1(nxt);
 	st.push(cur);
 }
+
 void dfs2(int cur){
 	chk[cur] = 2;
 	for(int nxt : v[cur]) if(chk[nxt] != 2) dfs2(nxt);

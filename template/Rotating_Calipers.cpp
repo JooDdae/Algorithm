@@ -16,12 +16,15 @@ struct point{
 }in[MAX_N],st[MAX_N];
 int n,k;
 double mx;
+
 ll cross(point a,point b){
 	return a.x*b.y-a.y*b.x;
 }
+
 double dist(point a,point b){
 	return sqrt((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));
 }
+
 int main(){
 	scanf("%d",&n);
 	for(int i=1;i<=n;i++) scanf("%lld %lld",&in[i].x,&in[i].y);

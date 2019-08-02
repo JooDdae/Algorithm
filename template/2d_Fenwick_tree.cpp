@@ -16,6 +16,7 @@ void update(int x,int y,int val){
 		x += x & (-x);
 	}
 }
+
 int find(int x,int y){
 	int re=0;
 	while(x){

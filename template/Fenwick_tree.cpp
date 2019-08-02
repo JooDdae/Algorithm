@@ -14,6 +14,7 @@ void update(int bit, int val){
 		bit += bit & (-bit);
 	}
 }
+
 ll find(int bit){
 	ll re=0;
 	while(bit){

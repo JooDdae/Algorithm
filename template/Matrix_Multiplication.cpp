@@ -1,6 +1,7 @@
 // boj.kr/2740
 #include<bits/stdc++.h>
 using namespace std;
+
 struct matrix{
 	vector<vector<int>> mt;
 	matrix operator * (const matrix &a) const{
@@ -17,6 +18,7 @@ struct matrix{
 	}
 }a,b;
 int n,m,k;
+
 int main(){
     scanf("%d %d",&n,&m);
     a.mt.resize(n, vector<int>(m));

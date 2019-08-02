@@ -1,12 +1,15 @@
 // boj.kr/6086
 #include<bits/stdc++.h>
 using namespace std;
+
 #define MAX_N 256
+
 struct node{
 	int to,cap,val,r;
 };
 int n,ans,chk[MAX_N];
 vector<node> v[MAX_N];
+
 int f(int cur,int cap){
 	if(cur == 'Z') return cap;
 	chk[cur] = 1;
@@ -21,6 +24,7 @@ int f(int cur,int cap){
 	}
 	return 0;
 }
+
 int main(){
 	scanf("%d",&n);
 	for(int i=1;i<=n;i++){
