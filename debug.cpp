@@ -1,24 +1,34 @@
-#include <bits/stdc++.h>
-#define rep(i,x,n) for(int i=x; i<n; i++)
+#include<bits/stdc++.h>
 using namespace std;
+typedef long long ll;
+int t,n;
+ll arr[101010];
+int f(ll l,ll r){
+    if(l==r) return arr[l];
+    ll mid=(l+r)/2;
+    ll re = max(f(l,mid),f(mid+1,r));
+    ll h=min(arr[mid] , arr[mid+1]),lw = mid,hi=mid+1;
+    re=max(re,2 * h);
+    while(l<lw || hi<r){
+        if(hi<r && (lw==l || arr[hi+1] > arr[lw-1])){
+            hi++;
+            h=min(h,arr[hi]);
+            re=max(re,h*(hi-lw+1));
+        }else{
+            lw--;
+            h=min(h,arr[lw]);
+            re=max(re,h*(hi-lw+1));
+        }
+    }
+    return re;
+}
 
-int main() {
-   ios_base::sync_with_stdio(false);cin.tie(nullptr);
-   int H, W, N, m=0;
-   cin>>H>>W>>N;
-   vector<pair<int, int>> A(N);
-   rep(i, 0, N) {
-      auto&[a,b]=A[i];
-      cin>>a>>b;
-      if(a<b) swap(a, b);
-      rep(j, 0, i) {
-         auto[c,d]=A[j];
-         if(a+d<=W && b<=H && c<=H
-         || a+d<=H && b<=W && c<=W
-         || b+d<=W && a<=H && c<=H
-         || b+d<=H && a<=W && c<=W)
-            m=max(m, a*b+c*d);
-      }
-   }
-   cout<<m;
+int main(){
+    while(1){
+        scanf("%d",&n);
+        if(!n) break;
+        for(int i=1;i<=n;i++) scanf("%lld",&arr[i]);
+
+        printf("%lld\n",f(1,n));
+    }
 }

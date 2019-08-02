@@ -9,7 +9,7 @@ int n,m,k;
 ll tree[MAX_N];
 
 void update(int bit, int val){
-	while(bit < MAX_N){
+	while(bit <= n){
 		tree[bit] += val;
 		bit += bit & (-bit);
 	}
