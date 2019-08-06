@@ -23,7 +23,7 @@ void update(int node,int l,int r,int id,int val){
 }
 
 int find(int node,int l,int r,int nl,int nr){
-	if(r<nl || nr<l) return 0;
+	if(r<nl || nr<l || l>r) return 0;
 	if(nl<=l && r<=nr) return tree[node];
 	return max(find(node*2,l,mid,nl,nr), find(node*2+1,mid+1,r,nl,nr));
 }
