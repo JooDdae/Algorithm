@@ -1,4 +1,4 @@
-// boj.kr/9240 로버트 후드 // 구현 실수
+// boj.kr/9240 로버트 후드 / 구현 실수
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
