@@ -1,1 +1,1 @@
-# BOJ
+# My Algorithm workspace!
