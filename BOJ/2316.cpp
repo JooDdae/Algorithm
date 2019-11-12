@@ -1,13 +1,12 @@
-// boj.kr/6086
 #include<bits/stdc++.h>
 using namespace std;
 
-#define MAX_N 256
+#define MAX_N 808
 
 struct node{
 	int to,cap,val,r;
 };
-int n,ans,chk[MAX_N],source,sink;
+int n,m,ans,chk[MAX_N],source,sink;
 vector<node> v[MAX_N];
 
 void addEdge(int l,int r,int cap){
@@ -31,18 +30,20 @@ int f(int cur,int cap){
 }
 
 int main(){
-	scanf("%d",&n);
-	source = 'A', sink = 'Z';
-	for(int i=1;i<=n;i++){
-		char a,b; int c; scanf(" %c %c %d",&a,&b,&c);
-		addEdge(a, b, c);
-		addEdge(b, a, c);
+	scanf("%d %d",&n,&m);
+	source = 1, sink = 2+n;
+	for(int i=1;i<=n;i++) addEdge(i+n, i, 1);
+	for(int i=1;i<=n;i++) addEdge(i, i+n, 1);
+	for(int i=1;i<=m;i++){
+		int a,b; scanf("%d %d",&a,&b);
+		addEdge(a, b+n, 1e9);
+		addEdge(b, a+n, 1e9);
 	}
 	while(1){
-		int fl = f(source ,1e9);
+		int fl = f(source,1e9);
 		if(!fl) break;
 		ans += fl;
-		for(int i='A';i<='z';i++) chk[i]=0;
+		for(int i=1;i<=n+n;i++) chk[i]=0;
 	}
 	printf("%d",ans);
 }
