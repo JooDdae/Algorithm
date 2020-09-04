@@ -14,12 +14,11 @@ void dfs(int cur,int par){
 	for(int nxt : v[cur]) if(nxt != par) dfs(nxt, cur);
 }
 
-int lca(int a,int b){
-	if(lev[a] < lev[b]) swap(a,b);
-	for(int i=0;i<=log;i++) if((1<<i)&(lev[a]-lev[b])) a=sp[i][a];
-	if(a == b) return a;
-	for(int i=log;i>=0;i--) if(sp[i][a] != sp[i][b]) a=sp[i][a],b=sp[i][b];
-	return sp[0][a];
+int lca(int a, int b){
+    if(lev[a] < lev[b]) swap(a, b);
+    for(int i=0;i<=log;i++) if((1 << i) & (lev[a] - lev[b])) a = sp[i][a];
+    for(int i=log;i>=0;i--) if(sp[i][a] != sp[i][b]) a = sp[i][a], b = sp[i][b];
+    return a == b ? a : sp[0][a];
 }
 
 int main(){
