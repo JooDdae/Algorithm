@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[
+vector<int> sosu1 = {150001, 150011, 150041, 150053, 150061, 150067, 150077, 150083, 150089, 150091, 150097};
+vector<int> sosu2 = {998244353, 998244389, 998244391, 998244397, 998244407, 998244431, 998244433, 1000696969};
+
+template<class P> struct RabinCarp{ // 1-based
+	P p1, p2; // p1 < p2
+	vector<P> h, pw;
+
+	RabinCarp(P a, P b, const string &s){
+		p1 = a, p2 = b;
+		h.resize(s.size()+1);
+		pw.resize(s.size()+1);
+		pw[0] = 1;
+		for(int i=1;i<=s.size();i++) h[i] = ((h[i-1] * p1 + s[i-1]) % p2 + p2 * p2) % p2, pw[i] = pw[i-1] * p1 % p2;
+	}
+
+	P find(int l, int r) { // 1 based
+		return ((h[r] - h[l-1] * pw[r-l+1]) % p2 + p2 * p2) % p2;
+	}
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>rabinkarp</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

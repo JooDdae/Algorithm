@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+// find_by_order(K) = K번째 수(0 base), order_of_key(K) = K보다 작은 수의 개수, less -> less_equal to multiset, change null_type to map
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+using pbds = tree <int, null_type, less<>, rb_tree_tag, tree_order_statistics_node_update>;
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pbds</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

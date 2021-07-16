@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+template<class T = int, class O = less<T>>
+struct heap_set {
+    priority_queue<T, vector<T>, O> pq, rpq;
+    const T& top() const { return pq.top(); }
+    int size() const { return int(pq.size() - rpq.size()); }
+    bool empty() const { return !size(); }
+    void flush() { while(rpq.size() && pq.top() == rpq.top()) pq.pop(), rpq.pop(); }
+    void insert(const T x) { pq.push(x); flush(); }
+    void pop() { pq.pop(); flush(); }
+    void erase(const T x) { rpq.push(x); flush(); }
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>heap_set</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
